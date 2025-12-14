@@ -1,4 +1,4 @@
-package startup
+package com.kartikjaiswal88.startup
 
 import javax.inject._
 import play.api.Logger
@@ -19,7 +19,6 @@ class AppStartup @Inject() (lifecycle: ApplicationLifecycle):
   onStartup()
 
   private def onStartup(): Unit =
-    println("hello.......................")
     logger.info("Running startup initialization")
   // TODO:
   // Read config map
@@ -31,7 +30,6 @@ class AppStartup @Inject() (lifecycle: ApplicationLifecycle):
   // ======================
 
   lifecycle.addStopHook { () =>
-    println("He..................")
     logger.info("Application shutting down...")
     onShutdown()
   }
