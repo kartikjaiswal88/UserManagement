@@ -4,9 +4,10 @@ import javax.inject._
 import play.api.Logger
 import play.api.inject.ApplicationLifecycle
 import scala.concurrent.Future
+import com.kartikjaiswal88.config.*
 
 @Singleton
-class AppStartup @Inject() (lifecycle: ApplicationLifecycle):
+class AppStartup @Inject()(lifecycle: ApplicationLifecycle):
 
   private val logger = Logger(this.getClass)
 
@@ -20,6 +21,7 @@ class AppStartup @Inject() (lifecycle: ApplicationLifecycle):
 
   private def onStartup(): Unit =
     logger.info("Running startup initialization")
+    Config.init()
   // TODO:
   // Read config map
   // Initialize DB pool
@@ -37,4 +39,4 @@ class AppStartup @Inject() (lifecycle: ApplicationLifecycle):
   private def onShutdown(): Future[Unit] =
   // Close DB pool
   // Close clients
-  Future.successful(())
+    Future.successful(())
